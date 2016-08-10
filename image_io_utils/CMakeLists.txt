@@ -15,7 +15,9 @@ add_subdirectory(src/camera_params)
 
 	
 add_subdirectory(src/image-tool)
-add_subdirectory(src/image-comms)
 add_subdirectory(src/tools)
-add_subdirectory(src/image-warp)
-add_subdirectory(src/image-anaglyph)
+
+# Old tools from Matt:
+#add_subdirectory(src/image-comms)
+#add_subdirectory(src/image-warp)
+#add_subdirectory(src/image-anaglyph)
