@@ -28,7 +28,7 @@ pods_install_headers(multisense_renderer.h
 pods_install_libraries(multisense-renderer)
 
 pods_install_pkg_config_file(multisense-renderer
-    LIBS -lmultisense-renderer
+    LIBS -lmultisense-renderer -lgthread-2.0
     REQUIRES bot2-vis bot2-frames 
     VERSION 0.0.1)
 
