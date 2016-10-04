@@ -7,7 +7,7 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 # Joint Level Filters
 add_executable(test-multisense-image-filtering test-multisense-image-filtering.cpp )
 pods_use_pkg_config_packages(test-multisense-image-filtering
-     multisense_image_utils   )
+     multisense_image_utils lcmtypes_bot2-core)
 # bot2-frames_cpp   pronto_vis  )
 target_link_libraries (test-multisense-image-filtering lcm z)
 #pronto_math  )

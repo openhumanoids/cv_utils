@@ -13,7 +13,7 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <lcmtypes/bot_core.h>
-#include <lcmtypes/bot_core.hpp>
+#include <lcmtypes/bot_core/images_t.hpp>
 
 #include <multisense_image_utils/multisense_image_utils.hpp>
 

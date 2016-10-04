@@ -13,7 +13,8 @@
 #include <lcm/lcm-cpp.hpp>
 
 #include <opencv2/opencv.hpp>
-#include <lcmtypes/bot_core.hpp>
+#include <lcmtypes/bot_core/image_t.hpp>
+#include <lcmtypes/bot_core/images_t.hpp>
 #include <image_io_utils/image_io_utils.hpp> // to simplify jpeg/zlib compression and decompression
 
 #include <ConciseArgs>
