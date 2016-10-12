@@ -8,7 +8,8 @@
 #include <ConciseArgs>
 #include <pcl/io/pcd_io.h>
 #include <pcl/point_types.h>
-#include "lcmtypes/bot_core.hpp"
+#include <lcmtypes/bot_core/image_t.hpp>
+#include <lcmtypes/bot_core/images_t.hpp>
 #include <multisense_utils/multisense_utils.hpp> // create point clouds
 
 using namespace cv;

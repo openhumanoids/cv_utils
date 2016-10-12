@@ -5,8 +5,7 @@
 
 #include <boost/shared_ptr.hpp>
 #include <lcm/lcm-cpp.hpp>
-#include <lcmtypes/bot_core.hpp>
-//#include <lcmtypes/drc_lcmtypes.hpp>
+#include <lcmtypes/bot_core/image_t.hpp>
 
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>

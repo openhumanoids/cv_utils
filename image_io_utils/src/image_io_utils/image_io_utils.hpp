@@ -7,7 +7,7 @@
 
 #include <image_utils/jpeg.h>
 #include <lcm/lcm-cpp.hpp>
-#include <lcmtypes/bot_core.hpp>
+#include <lcmtypes/bot_core/image_t.hpp>
 #include <boost/shared_ptr.hpp>
 
 class image_io_utils {

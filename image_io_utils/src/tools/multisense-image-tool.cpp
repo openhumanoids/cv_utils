@@ -20,7 +20,8 @@
 #include <pcl/io/pcd_io.h>
 #include <pcl/point_types.h>
 
-#include <lcmtypes/bot_core.hpp>
+#include <lcmtypes/bot_core/image_t.hpp>
+#include <lcmtypes/bot_core/images_t.hpp>
 
 #include <bot_param/param_client.h>
 #include <bot_frames/bot_frames.h>

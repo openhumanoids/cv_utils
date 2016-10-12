@@ -12,7 +12,8 @@
 #include <pcl/io/pcd_io.h>
 #include <pcl/point_types.h>
 
-#include <lcmtypes/bot_core.hpp>
+#include <lcmtypes/bot_core/image_t.hpp>
+#include <lcmtypes/bot_core/images_t.hpp>
 
 #include <image_io_utils/image_io_utils.hpp>   // to simplify jpeg/zlib compression and decompression
 
