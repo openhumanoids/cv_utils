@@ -100,7 +100,7 @@ int main(int argc, char ** argv) {
   CommandLineConfig cl_cfg;
   cl_cfg.depthThresh = 100.0f; //m
   cl_cfg.sizeThresh = 4000; // pixels
-  cl_cfg.input = "CAMERA";
+  cl_cfg.input = "MULTISENSE_CAMERA";
   cl_cfg.output = "CAMERA_OUT";
   ConciseArgs opt(argc, (char**)argv);
   opt.add(cl_cfg.depthThresh, "d", "depthThresh","depth in m from camera");

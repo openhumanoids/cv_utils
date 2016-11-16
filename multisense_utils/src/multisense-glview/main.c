@@ -399,7 +399,7 @@ int main(int argc, char **argv)
 {
 
   char channelName[512];
-  strcpy(channelName, "CAMERA");
+  strcpy(channelName, "MULTISENSE_CAMERA");
   char *lcm_url = NULL;
 
   int c;
