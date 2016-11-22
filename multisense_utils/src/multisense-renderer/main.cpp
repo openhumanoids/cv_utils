@@ -24,7 +24,6 @@ int main(int argc, char *argv[])
   
     gtk_init(&argc, &argv);
     glutInit(&argc, argv);
-    g_thread_init(NULL);
 
     setlinebuf(stdout);
 
@@ -41,7 +40,7 @@ int main(int argc, char *argv[])
       fprintf(stderr,"Reading config from file\n");
       bot_param = bot_param_new_from_file(config_file.c_str());
       if (bot_param == NULL) {
-        std::cerr << "Couldn't get bot param from file %s\n" << config_file << std::endl;
+        std::cerr << "Couldn't get bot param from file " << config_file << std::endl;
         exit(-1);
       }
     }else {

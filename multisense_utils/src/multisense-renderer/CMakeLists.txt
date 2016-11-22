@@ -8,7 +8,7 @@ if(NOT BOT2_VIS_FOUND)
     return()
 endif(NOT BOT2_VIS_FOUND)
 
-#add_definitions(-Wall -std=gnu99)
+add_definitions(-Wall -Wno-uninitialized)
 
 add_library(multisense-renderer SHARED 
     multisense_renderer.cpp ../multisense-glview/jpeg-utils-ijg.c
