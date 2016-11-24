@@ -214,21 +214,22 @@ on_frame(const lcm_recv_buf_t* lcm, const char* channel, const bot_core_images_t
 
     int i;
     const uint16_t* depth = NULL;
-    int scaling=10;
+    int scaling=2;
+    bool disparity_values = false;
     if(msg->image_types[1] == BOT_CORE_IMAGES_T_DISPARITY) {
       depth = (uint16_t*) msg->images[1].data;
+      disparity_values = true;
     }else if (msg->image_types[1] == BOT_CORE_IMAGES_T_DISPARITY_ZIPPED ) {
       unsigned long dlen = width*height*2 ;//msg->depth.uncompressed_size;
       uncompress(depth_uncompress_buffer, &dlen, msg->images[1].data, msg->images[1].size);
       depth = (uint16_t*) depth_uncompress_buffer;
+      disparity_values = true;
     }else if (msg->image_types[1] == BOT_CORE_IMAGES_T_DEPTH_MM ) {
       depth = (uint16_t*) msg->images[1].data;
-      scaling=2;
     }else if (msg->image_types[1] == BOT_CORE_IMAGES_T_DEPTH_MM_ZIPPED ) {
       unsigned long dlen = width*height*2 ;//msg->depth.uncompressed_size;
       uncompress(depth_uncompress_buffer, &dlen, msg->images[1].data, msg->images[1].size);
       depth = (uint16_t*) depth_uncompress_buffer;
-      scaling=2;
     }else{
       printf("Second Image Format Not Understood [B]\n");
     }
@@ -236,16 +237,26 @@ on_frame(const lcm_recv_buf_t* lcm, const char* channel, const bot_core_images_t
     pthread_mutex_lock( &mutex1 );
     int npixels = width * height;
     for (i=0; i<npixels; i++) {
-      //printf("%i: %04X\n",  i, depth[i]);
 
-      if ( scaling*depth[i] >= DEPTH_VAL ) {
+      int d = depth[i];
+
+      // Invert the disparity values and scale to reasonable range
+      if (disparity_values){
+        if (depth[i]==0){
+          d=0;
+        }else{
+          d=round(600000.0/ (float)depth[i]) ;
+        }
+      }
+
+      if ( scaling*d >= DEPTH_VAL ) {
         depth_img_data[3*i+0] = 0;
         depth_img_data[3*i+1] = 0;
         depth_img_data[3*i+2] = 0;
         continue;
       }
 
-      int pval = t_gamma[scaling*depth[i]];
+      int pval = t_gamma[scaling*d];
       int lb = pval & 0xff;
       switch (pval>>8) {
       case 0:
@@ -399,7 +410,7 @@ int main(int argc, char **argv)
 {
 
   char channelName[512];
-  strcpy(channelName, "CAMERA");
+  strcpy(channelName, "MULTISENSE_CAMERA");
   char *lcm_url = NULL;
 
   int c;
