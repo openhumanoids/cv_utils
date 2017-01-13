@@ -25,6 +25,7 @@ int main(int argc, char **argv) {
   bool compress_images = true;
   bool simulate_multisense_camera_left = false;
   int jpeg_quality = 90;
+  std::string resolution = "VGA";
 
   ConciseArgs opt(argc, argv);
   opt.add(compress_images, "nc", "dont_compress_images",
@@ -32,6 +33,7 @@ int main(int argc, char **argv) {
   opt.add(simulate_multisense_camera_left, "m", "simulate_multisense",
           "send CAMERA images_t");
   opt.add(jpeg_quality, "j", "jpeg_quality", "jpeg quality (1-100)");
+  opt.add(resolution, "r", "resolution", "resolution - VGA, HD, FullHD");
   opt.parse();
 
   std::cout << "Compress JPEG: " << std::to_string(compress_images)
@@ -48,6 +50,15 @@ int main(int argc, char **argv) {
     std::cerr << "Could not open webcam, exiting" << std::endl;
     return 1;
   }
+
+  if (resolution == "FullHD") {
+    cap.set(CV_CAP_PROP_FRAME_WIDTH, 1920);
+    cap.set(CV_CAP_PROP_FRAME_HEIGHT, 1080);
+  } else if (resolution == "HD") {
+    cap.set(CV_CAP_PROP_FRAME_WIDTH, 1280);
+    cap.set(CV_CAP_PROP_FRAME_HEIGHT, 720);
+  }
+
   uint width = cap.get(CV_CAP_PROP_FRAME_WIDTH);
   uint height = cap.get(CV_CAP_PROP_FRAME_HEIGHT);
 
