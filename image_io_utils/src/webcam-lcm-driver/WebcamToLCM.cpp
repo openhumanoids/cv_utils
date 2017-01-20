@@ -103,10 +103,10 @@ int main(int argc, char **argv) {
     lcm_imgs.images[0] = lcm_img;
     lcm_imgs.utime = lcm_img.utime;
 
-    lcm_handle.publish("WEBCAM", &lcm_img);
-
     if (simulate_multisense_camera_left)
       lcm_handle.publish("CAMERA", &lcm_imgs);
+    else
+      lcm_handle.publish("WEBCAM", &lcm_img);
 
     if (cv::waitKey(1) == 27) break;  // press ESC to stop
   }
