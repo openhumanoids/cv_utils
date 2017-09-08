@@ -1,4 +1,14 @@
-set(PCL_LIBRARIES  pcl_io-1.7)
+find_package(PkgConfig REQUIRED)
+
+
+pkg_check_modules(PCL_IO pcl_io-1.7)
+pkg_check_modules(PCL_IO_1_8 pcl_io-1.8)
+
+if(PLC_IO_FOUND)
+  set(PCL_LIBRARIES  pcl_io-1.7)
+elseif(PCL_IO_1_8_FOUND)
+  set(PCL_LIBRARIES pcl_io-1.8)
+endif()
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 
