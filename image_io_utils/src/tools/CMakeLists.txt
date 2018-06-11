@@ -45,17 +45,16 @@ pods_install_executables(drc-multisense-to-png )
 
 
 
-add_executable(drc-video-write video-write.cpp  )
-pods_use_pkg_config_packages(drc-video-write
-  opencv)
-pods_install_executables(drc-video-write )
+# add_executable(drc-video-write video-write.cpp  )
+# pods_use_pkg_config_packages(drc-video-write opencv)
+# pods_install_executables(drc-video-write )
 
 
 
-add_executable(drc-camera-capture capture-camera.cpp)
-pods_use_pkg_config_packages(drc-camera-capture
-  opencv)
-pods_install_executables(drc-camera-capture)
+# add_executable(drc-camera-capture capture-camera.cpp)
+# pods_use_pkg_config_packages(drc-camera-capture
+#   opencv)
+# pods_install_executables(drc-camera-capture)
 
 add_executable(lcm-log-to-avi log_to_avi.cpp)
 pods_use_pkg_config_packages(lcm-log-to-avi lcm 
